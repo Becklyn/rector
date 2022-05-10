@@ -1,7 +1,13 @@
 Becklyn Rector
 ==============
 
-This package contains a list of Rector rules that help you up-grading your Symfony-based code base and keeping it deprecation-free.
+This package contains a list of [Rector](https://github.com/rectorphp/rector) rules that help you up-grading your Symfony-based code base and keeping it deprecation-free.
+
+
+Installation
+============
+
+Easily get this package via Composer: `composer require --dev becklyn/rector`
 
 
 Usage
