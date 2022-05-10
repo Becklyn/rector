@@ -1,0 +1,31 @@
+{
+    "name": "becklyn/rector",
+    "description": "A collection of various refactoring rules for projects that use Rector and mainly Symfony",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Becklyn\\Rector\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Becklyn\\Rector\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kai Eichinger",
+            "email": "ke@becklyn.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "rector/rector": "^0.12.23",
+        "phpstan/phpstan": "^1.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "symfony/framework-bundle": "^6.0"
+    }
+}

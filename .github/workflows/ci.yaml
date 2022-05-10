@@ -1,0 +1,38 @@
+on:
+    push:
+        branches:
+            - '*.x'
+    pull_request:
+        branches:
+            - '*.x'
+
+name: CI
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                php-versions: ['7.4', '8.0', '8.1']
+        name: PHP ${{ matrix.php-versions }} Testing
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php-versions }}
+                  extensions: mbstring, intl
+                  ini-values: post_max_size=256M, max_execution_time=180
+                  coverage: xdebug
+
+            - name: Composer Install
+              run: composer install
+
+            - name: Composer Plugins
+              run: composer global require ergebnis/composer-normalize --no-interaction --prefer-dist --no-progress --no-suggest --no-suggest
+
+            - name: Composer Normalize
+              run: composer normalize --indent-size 4 --indent-style space --dry-run
+
+            - name: PhpUnit
+              run: ./vendor/bin/phpunit -c phpunit.xml --testdox
